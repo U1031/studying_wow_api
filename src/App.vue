@@ -1,28 +1,28 @@
 <template>
-  <div id="app">
-    <img src="./assets/logo.png">
-    <hello></hello>
-  </div>
+    <div id="app">
+      <login></login>
+      <wmenu></wmenu>
+    </div>
 </template>
 
 <script>
-import Hello from './components/Hello'
+import Login from './components/Login'
+import Wmenu from './components/Wmenu'
 
 export default {
   name: 'app',
   components: {
-    Hello
+    Login,
+    Wmenu
   }
 }
 </script>
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  margin: 0 auto;
+  border: 0.5px solid black;
+  width: 270px;
+  height: 480px;
 }
 </style>
