@@ -1,8 +1,8 @@
 <template>
-    <div id="app">
-      <login></login>
-      <wmenu></wmenu>
-    </div>
+  <div id="app">
+    <login></login>
+    <wmenu></wmenu>
+  </div>
 </template>
 
 <script>
@@ -11,6 +11,17 @@ import Wmenu from './components/Wmenu'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      user:{
+        u_realm: '',
+        u_name : ''
+      }
+    }
+  },
+  methods: {
+
+  },
   components: {
     Login,
     Wmenu
