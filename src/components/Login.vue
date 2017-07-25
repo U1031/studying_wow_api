@@ -12,8 +12,9 @@ export default {
   name: 'login',
   data() {
     return {
-      realm: '',
-      name: ''
+      realm: 'azshara',
+      name: 'Deepj',
+      user_data: []
     }
   },
   methods: {
@@ -25,6 +26,9 @@ export default {
         this.$http.get(`${baseURI}` + this.realm + `/` + this.name + `?fields=appearance&locale=ko_KR&apikey=r7gy86fvdpxcgux44nurnrx29rbcm4td`)
           .then((result) => {
             console.log(result)
+            this.user_data = result
+            this.$emit('changed', this.user_data)
+            document.querySelector('.login').style.display='none'
           })
           .catch(function (error) {
             console.log(error)
@@ -40,5 +44,8 @@ export default {
 <style>
 .login {
   margin: 10px;
+}
+
+.login h1{
 }
 </style>

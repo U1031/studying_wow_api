@@ -1,7 +1,11 @@
 <template>
   <div id="app">
-    <login></login>
-    <wmenu></wmenu>
+    <div v-if="w_state === 'login'">
+      <login v-on:changed='event1'></login>
+    </div>
+    <div v-if="w_state === 'logon'">
+      <wmenu v-bind:u_data_menu='u_data'></wmenu>
+    </div>
   </div>
 </template>
 
@@ -13,14 +17,18 @@ export default {
   name: 'app',
   data() {
     return {
-      user:{
         u_realm: '',
-        u_name : ''
-      }
+        u_name: '',
+        w_state: 'login',
+        u_data: []
     }
   },
   methods: {
-
+    event1: function (key) {
+      this.u_data = key
+      this.w_state = 'logon'
+      // console.log(this.u_data.data.name)
+    }
   },
   components: {
     Login,
