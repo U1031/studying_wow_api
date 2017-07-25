@@ -3,57 +3,82 @@
         <div v-if="mychar_ready === 'ready'">
             <table class='outer_table' border='1'>
                 <tr class='info_top'>
-                    <td>
+                    <td class='info_top left'>
                         <table class='inner_table left' border='1'>
                             <tr class='items_head'>
+                                <img :src='item_image_url(mychar_data.head)'>
                             </tr>
                             <tr class='items_neck'>
+                                <img :src='item_image_url(mychar_data.neck)'>
                             </tr>
-                            <tr class='items_soulder'>
-                                <img :src='item_image_url()'>
+                            <tr class='items_shoulder'>
+                                <img :src='item_image_url(mychar_data.shoulder)'>
                             </tr>
                             <tr class='items_back'>
+                                <img :src='item_image_url(mychar_data.back)'>
+    
                             </tr>
                             <tr class='items_chest'>
+                                <img :src='item_image_url(mychar_data.chest)'>
                             </tr>
                             <tr>
+                                <img src='https://wow.zamimg.com/images/wow/icons/large/ability_ambush.jpg'>
                             </tr>
                             <tr>
+                                <img src='https://wow.zamimg.com/images/wow/icons/large/ability_ambush.jpg'>
                             </tr>
                             <tr class='items_wrist'>
+                                <img :src='item_image_url(mychar_data.wrist)'>
+    
                             </tr>
                         </table>
                     </td>
-                    <td>
+                    <td class='info_top center'>
                     </td>
-                    <td>
+                    <td class='info_top right'>
                         <table class='inner_table right' border='1'>
                             <tr class='items_hands'>
+                                <img :src='item_image_url(mychar_data.hands)'>
+    
                             </tr>
                             <tr class='items_waist'>
+                                <img :src='item_image_url(mychar_data.waist)'>
+    
                             </tr>
                             <tr class='items_legs'>
+                                <img :src='item_image_url(mychar_data.legs)'>
+    
                             </tr>
                             <tr class='items_feet'>
+                                <img :src='item_image_url(mychar_data.feet)'>
+    
                             </tr>
                             <tr class='items_finger1'>
+                                <img :src='item_image_url(mychar_data.finger1)'>
                             </tr>
                             <tr class='items_finger2'>
+                                <img :src='item_image_url(mychar_data.finger2)'>
                             </tr>
                             <tr class='items_trinket1'>
+                                <img :src='item_image_url(mychar_data.trinket1)'>
                             </tr>
                             <tr class='items_trinket2'>
+                                <img :src='item_image_url(mychar_data.trinket2)'>
                             </tr>
                         </table>
                     </td>
                 </tr>
                 <tr class='info_bottom'>
-                    <td colspan="3">
-                        <table border='1'>
+                    <td colspan="3" class='info_bottom down'>
+                        <table border="1" class='info_bottom_table'>
+    
                             <td class='itmes_mainHand'>
+                                <img :src='item_image_url(mychar_data.mainHand)'>
                             </td>
                             <td class='items_offHand'>
+                                <img :src='item_image_url(mychar_data.offHand)'>
                             </td>
+    
                         </table>
                     </td>
                 </tr>
@@ -72,9 +97,10 @@ export default {
         }
     },
     methods: {
-        item_image_url: function () {
-            // return 'https://render-kr.worldofwarcraft.com/icons/56/' + this.mychar_data.soulder.icon + '.jpg'
+        item_image_url: function (icon_url) {
+            return 'https://render-kr.worldofwarcraft.com/icons/56/' + icon_url.icon + '.jpg'
         }
+
     },
     created() {
         const baseURI = 'https://kr.api.battle.net/wow/character/';
@@ -105,16 +131,36 @@ export default {
 }
 
 .mychar .outer_table .inner_table {
-    height: 80%;
+    height: 100%;
+    width: 100%;
+    margin: 0 auto;
 }
 
 .info_bottom {
+    margin: 0 auto;
     height: 20%;
 }
 
+.info_bottom .down {
+    margin: 0 auto;
+}
+
+.info_top .left {
+    width: 20%;
+}
+
+.info_top .right {
+    width: 20%;
+}
+
+.info_bottom_table {
+    margin: 0 auto;
+}
+
 img {
-    width: 80%;
-    border-radius: 2%;
+    margin: 0 auto;
+    width: 40px;
+    height: 40px;
 }
 </style>
 
