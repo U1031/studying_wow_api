@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div v-if="w_state === 'login'">
-      <login v-on:changed='event1'></login>
+      <login v-on:changed_login='main_login_function'></login>
     </div>
     <div v-if="w_state === 'logon'">
-      <wmenu v-bind:u_data_menu='u_data'></wmenu>
+      <wmenu v-bind:u_data_menu='u_data' v-on:changed_logout='main_logout_function'></wmenu>
     </div>
   </div>
 </template>
@@ -24,10 +24,13 @@ export default {
     }
   },
   methods: {
-    event1: function (key) {
+    main_login_function: function (key) {
       this.u_data = key
       this.w_state = 'logon'
-      // console.log(this.u_data.data.name)
+    },
+    main_logout_function: function(key){
+      this.w_state = 'login'
+      this.u_data = []
     }
   },
   components: {

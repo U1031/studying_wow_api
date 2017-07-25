@@ -27,7 +27,7 @@ export default {
           .then((result) => {
             console.log(result)
             this.user_data = result
-            this.$emit('changed', this.user_data)
+            this.$emit('changed_login', this.user_data)
             document.querySelector('.login').style.display='none'
           })
           .catch(function (error) {
