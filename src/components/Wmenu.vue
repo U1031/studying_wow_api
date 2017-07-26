@@ -25,7 +25,7 @@
                         <button>책갈피</button>
                     </td>
                     <td>
-                        <button>아이템 검색</button>
+                        <button v-on:click='itemSearch_function()'>아이템 검색</button>
                     </td>
                     <td>
                         <button>특성 계산기</button>
@@ -58,10 +58,14 @@
         <div v-if="wmenu_state === 'mychar'">
             <mychar v-bind:passed_data='u_data_menu'></mychar>
         </div>
+        <div v-if="wmenu_state === 'itemSearch'">
+            <itemSearch v-bind:passed_data='u_data_menu'></itemSearch>
+        </div>
     </div>
 </template>
 <script>
 import Mychar from './Mychar'
+import ItemSearch from './ItemSearch'
 
 export default {
     name: 'wmenu',
@@ -79,10 +83,14 @@ export default {
         },
         mychar_function: function () {
             this.wmenu_state = 'mychar'
+        },
+        itemSearch_function: function(){
+            this.wmenu_state = 'itemSearch'
         }
     },
     components: {
-        Mychar
+        Mychar,
+        ItemSearch
     }
 }
 </script>

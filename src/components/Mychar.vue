@@ -7,6 +7,7 @@
                         <table class='inner_table left' border='1'>
                             <tr class='items_head'>
                                 <img :src='item_image_url(mychar_data.head)'>
+                                <!--v-for="(value, key) in mychar_data"-->
                             </tr>
                             <tr class='items_neck'>
                                 <img :src='item_image_url(mychar_data.neck)'>
@@ -29,7 +30,6 @@
                             </tr>
                             <tr class='items_wrist'>
                                 <img :src='item_image_url(mychar_data.wrist)'>
-    
                             </tr>
                         </table>
                     </td>
