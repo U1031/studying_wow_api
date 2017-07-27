@@ -106,7 +106,7 @@ export default {
     },
     created() {
         const baseURI = 'https://kr.api.battle.net/wow/character/';
-        this.$http.get(`${baseURI}` + this.passed_data.data.realm + `/` + this.passed_data.data.name + `?fields=items&locale=ko_KR&apikey=r7gy86fvdpxcgux44nurnrx29rbcm4td`)
+        this.$http.get(`${baseURI}` + this.passed_data.realm + `/` + this.passed_data.name + `?fields=items&locale=ko_KR&apikey=r7gy86fvdpxcgux44nurnrx29rbcm4td`)
             .then((result) => {
                 // console.log(result)
                 this.mychar_data = result.data.items

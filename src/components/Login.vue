@@ -35,9 +35,8 @@ export default {
         this.$http.get(`${baseURI}` + this.realm + `/` + this.name + `?fields=appearance&locale=ko_KR&apikey=r7gy86fvdpxcgux44nurnrx29rbcm4td`)
           .then((result) => {
             console.log(result)
-            this.user_data = result
-            this.$emit('changed_login', this.user_data)
-            this.$router.push({path: '/wmenu'})
+            this.user_data = result.data
+            this.$router.push({name: 'Wmenu', params:{u_data_menu:this.user_data}})
           })
           .catch(function (error) {
             console.log(error)

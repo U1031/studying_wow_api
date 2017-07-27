@@ -7,6 +7,8 @@ import VueRouter from "vue-router";
 
 import Login from './components/Login'
 import Wmenu from './components/Wmenu'
+import Mychar from './components/Mychar'
+import Talents from './components/Talents'
 
 
 Vue.prototype.$http = axios;
@@ -23,7 +25,21 @@ const routes = [{
     },
     {
         path: "/wmenu",
-        component: Wmenu
+        name: 'Wmenu',
+        component: Wmenu,
+        props: true
+    },
+    {
+        path: "/wmenu/:menuname",
+        name: 'Mychar',
+        component: Mychar,
+        props: true
+    },
+    {
+        path: '/test',
+        name: 'Talents',
+        component: Talents,
+        props: true
     }
 ];
 

@@ -18,25 +18,25 @@ export default {
   name: 'app',
   data() {
     return {
-      u_realm: '',
-      u_name: '',
-      w_state: 'login',
-      u_data: []
+      // u_realm: '',
+      // u_name: '',
+      // w_state: 'login',
+      // u_data: []
     }
   },
   methods: {
-    main_login_function: function (key) {
-      this.u_data = key
-      this.w_state = 'logon'
-    },
-    main_logout_function: function (key) {
-      this.w_state = 'login'
-      this.u_data = []
-    }
+    // main_login_function: function (key) {
+    //   this.u_data = key
+    //   this.w_state = 'logon'
+    // },
+    // main_logout_function: function (key) {
+    //   this.w_state = 'login'
+    //   this.u_data = []
+    // }
   },
   components: {
-    Login,
-    Wmenu
+    // Login,
+    // Wmenu
   }
 }
 </script>

@@ -1,7 +1,9 @@
 <template>
     <div class='wmenu'>
-        <div v-if="wmenu_state === 'basic'">
+        <div class='wmenu_page_header'>
             <h1>Menu</h1>
+        </div>
+        <div class='wmenu_page_body'>
             <table border='1'>
                 <tr>
                     <td>
@@ -28,7 +30,7 @@
                         <button v-on:click='itemSearch_function()'>아이템 검색</button>
                     </td>
                     <td>
-                        <button>특성 계산기</button>
+                        <button v-on:click='talents_function()'>특성 계산기</button>
                     </td>
                 </tr>
                 <tr>
@@ -55,51 +57,77 @@
                 </tr>
             </table>
         </div>
-        <div v-if="wmenu_state === 'mychar'">
-            <mychar v-bind:passed_data='u_data_menu'></mychar>
-        </div>
-        <div v-if="wmenu_state === 'itemSearch'">
-            <itemSearch v-bind:passed_data='u_data_menu'></itemSearch>
+        <div class='wmenu_page_tail'>
+            <button id='wmenu_page_back_btn' v-on:click='back_btn_function'>back</button>
         </div>
     </div>
 </template>
 <script>
-import Mychar from './Mychar'
-import ItemSearch from './ItemSearch'
+// import Mychar from './Mychar'
+// import ItemSearch from './ItemSearch'
 
 export default {
     name: 'wmenu',
     props: ['u_data_menu'],
     data() {
         return {
-            wmenu_state: 'basic'
         }
     },
     watch: {
     },
     methods: {
         logout_function: function () {
-            this.$emit('changed_logout', 'login')
+            this.$router.push({ path: '/login' })
         },
         mychar_function: function () {
-            this.wmenu_state = 'mychar'
+            this.$router.push({ name: 'Mychar', params: {passed_data : this.u_data_menu, menuname: 'mychar'}})
         },
-        itemSearch_function: function(){
-            this.wmenu_state = 'itemSearch'
+        itemSearch_function: function () {
+        },
+        back_btn_function: function () {
+            this.$router.push({ path: '/login'})
+        },
+        talents_function: function(){
+            this.$router.push({name: 'Talents', params:{menuname: 'talents'}})
         }
     },
     components: {
-        Mychar,
-        ItemSearch
+        // Mychar,
+        // ItemSearch
     }
 }
 </script>
 <style>
-.wmenu {
+/*.wmenu {
     margin: 0 auto;
     text-align: center;
     width: 100%;
     height: 100%;
+}*/
+
+.wmenu .wmenu_page_header {
+    position: absolute;
+    width: 80%;
+    height: 15%;
+    margin: 10px 25px auto;
+    border: 0.5px solid red;
+}
+
+.wmenu .wmenu_page_body {
+    position: absolute;
+    border: 0.5px solid red;
+    margin: 0px 25px auto;
+    width: 80%;
+    height: 70%;
+    top: 100px;
+}
+
+.wmenu .wmenu_page_tail {
+    position: absolute;
+    border: 0.5px solid red;
+    width: 80%;
+    margin: 10px 25px auto;
+    bottom: 10px;
 }
 
 .wmenu table {
