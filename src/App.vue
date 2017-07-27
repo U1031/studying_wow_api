@@ -1,11 +1,12 @@
 <template>
   <div id="app">
-    <div v-if="w_state === 'login'">
-      <login v-on:changed_login='main_login_function'></login>
-    </div>
-    <div v-if="w_state === 'logon'">
-      <wmenu v-bind:u_data_menu='u_data' v-on:changed_logout='main_logout_function'></wmenu>
-    </div>
+    <!--<div v-if="w_state === 'login'">
+        <login v-on:changed_login='main_login_function'></login>
+      </div>
+      <div v-if="w_state === 'logon'">
+        <wmenu v-bind:u_data_menu='u_data' v-on:changed_logout='main_logout_function'></wmenu>
+      </div>-->
+    <router-view></router-view>
   </div>
 </template>
 
@@ -17,10 +18,10 @@ export default {
   name: 'app',
   data() {
     return {
-        u_realm: '',
-        u_name: '',
-        w_state: 'login',
-        u_data: []
+      u_realm: '',
+      u_name: '',
+      w_state: 'login',
+      u_data: []
     }
   },
   methods: {
@@ -28,7 +29,7 @@ export default {
       this.u_data = key
       this.w_state = 'logon'
     },
-    main_logout_function: function(key){
+    main_logout_function: function (key) {
       this.w_state = 'login'
       this.u_data = []
     }
@@ -46,5 +47,8 @@ export default {
   border: 0.5px solid black;
   width: 270px;
   height: 480px;
+  text-align: center;
+  position: relative;
 }
+
 </style>

@@ -1,9 +1,18 @@
 <template>
   <div class="login">
-    <h1>Login Page</h1>
-    realm : <input v-model="realm"><br>
-    name : <input v-model="name"><br>
-    <button v-on:click='clickevent'>login</button>
+    <div class='login_page_header'>
+      <h1>Login Page</h1>
+    </div>
+    <div class='login_page_body'>
+      realm :
+      <input v-model="realm">
+      <br> name :
+      <input v-model="name">
+      <br>
+    </div>
+    <div class='login_page_btn'>
+      <button v-on:click='clickevent'>login</button>
+    </div>
   </div>
 </template>
 
@@ -28,7 +37,7 @@ export default {
             console.log(result)
             this.user_data = result
             this.$emit('changed_login', this.user_data)
-            //document.querySelector('.login').style.display='none'
+            this.$router.push({path: '/wmenu'})
           })
           .catch(function (error) {
             console.log(error)
@@ -42,10 +51,28 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style>
-.login {
-  margin: 10px;
+.login .login_page_header {
+  position: absolute;
+  width: 80%;
+  height: 15%;
+  margin: 10px 25px auto;
+  border: 0.5px solid red;
 }
 
-.login h1{
+.login .login_page_body {
+  position: absolute;
+  border: 0.5px solid red;
+  margin: 0px 25px auto;
+  width: 80%;
+  height: 70%;
+  top: 100px;
+}
+
+.login .login_page_btn {
+  position: absolute;
+  border: 0.5px solid red;
+  width: 80%;
+  margin: 10px 25px auto;
+  bottom: 10px;
 }
 </style>

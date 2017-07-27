@@ -98,6 +98,8 @@ export default {
 .wmenu {
     margin: 0 auto;
     text-align: center;
+    width: 100%;
+    height: 100%;
 }
 
 .wmenu table {
