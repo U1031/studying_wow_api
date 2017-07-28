@@ -1,13 +1,35 @@
 <template>
-    <div class='talentsdetail'>
+    <div class='talentsdetail' v-if="talents_detail_page_state==='ready'">
         <div class='talents_detail_page_header'>
-
+            <h1>{{class_name}} talents</h1>
         </div>
         <div class='talents_detail_page_body'>
-
+            <div class='talents_spec'>
+                <button v-for='spec in received_data.specs'>
+                    <img :src='insert_img(spec.icon)'>
+                </button>
+            </div>
+            <div class='talents_spell'>
+                <table border='1'>
+                    <tr>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                    </tr>
+                    <tr>
+                    </tr>
+                </table>
+            </div>
         </div>
         <div class='talents_detail_page_tail'>
-
+    
         </div>
     </div>
 </template>
@@ -17,8 +39,28 @@ export default {
     // props: ['class_name', 'class_id'],
     data() {
         return {
-            class_name: '도적',
-            class_id: 4
+            class_name: 'rogue',
+            class_id: 4,
+            talents_detail_page_state: '',
+            received_data: []
+        }
+    },
+    created() {
+        const baseURI = 'https://kr.api.battle.net/wow/data/talents?locale=ko_KR&apikey=r7gy86fvdpxcgux44nurnrx29rbcm4td';
+        this.$http.get(`${baseURI}`)
+            .then((result) => {
+                console.log(result)
+                this.received_data = result.data[this.class_id]
+                this.talents_detail_page_state = 'ready'
+            })
+            .catch(function (error) {
+                console.log(error)
+                window.alert(error)
+            })
+    },
+    methods: {
+        insert_img: function (img_src) {
+            return 'https://render-kr.worldofwarcraft.com/icons/56/' + img_src + '.jpg'
         }
     }
 }
@@ -41,6 +83,27 @@ export default {
     top: 100px;
 }
 
+.talentsdetail .talents_detail_page_body .talents_spec {
+    position: absolute;
+    border-bottom: 0.5px solid red;
+    margin: 0px auto;
+    width: 100%;
+    height: 20%;
+}
+
+.talentsdetail .talents_detail_page_body .talents_spell {
+    position: absolute;
+    border: 0.5px solid blue;
+    margin: 0px auto;
+    bottom : 0px;
+    width: 100%;
+    height: 77%;
+}
+
+.talents_spec button {
+    width: 33%;
+    height: 100%;
+}
 
 .talentsdetail .talents_detail_page_tail {
     position: absolute;
@@ -50,7 +113,4 @@ export default {
     margin: 10px 25px auto;
     bottom: 10px;
 }
-
-
-
 </style>
