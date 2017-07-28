@@ -80,15 +80,16 @@ export default {
             this.$router.push({ path: '/login' })
         },
         mychar_function: function () {
-            this.$router.push({ name: 'Mychar', params: {passed_data : this.u_data_menu, menuname: 'mychar'}})
+            this.$router.push({ name: 'Mychar', params: { passed_data: this.u_data_menu, menuname: 'mychar' } })
         },
         itemSearch_function: function () {
         },
         back_btn_function: function () {
-            this.$router.push({ path: '/login'})
+            this.$router.push({ path: '/login' })
         },
-        talents_function: function(){
-            this.$router.push({name: 'Talents', params:{menuname: 'talents'}})
+        talents_function: function () {
+            console.log(this.u_data_menu)
+            this.$router.push({ path: '/test' })
         }
     },
     components: {

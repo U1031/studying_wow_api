@@ -9,6 +9,7 @@ import Login from './components/Login'
 import Wmenu from './components/Wmenu'
 import Mychar from './components/Mychar'
 import Talents from './components/Talents'
+import TalentsDetail from './components/TalentsDetail'
 
 
 Vue.prototype.$http = axios;
@@ -39,6 +40,12 @@ const routes = [{
         path: '/test',
         name: 'Talents',
         component: Talents,
+        props: true
+    },
+    {
+        path: '/detail',
+        name: 'TalentsDetail',
+        component: TalentsDetail,
         props: true
     }
 ];
