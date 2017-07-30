@@ -1,18 +1,10 @@
 <template>
   <div id="app">
-    <!--<div v-if="w_state === 'login'">
-        <login v-on:changed_login='main_login_function'></login>
-      </div>
-      <div v-if="w_state === 'logon'">
-        <wmenu v-bind:u_data_menu='u_data' v-on:changed_logout='main_logout_function'></wmenu>
-      </div>-->
     <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Login from './components/Login'
-import Wmenu from './components/Wmenu'
 
 export default {
   name: 'app',
@@ -25,18 +17,8 @@ export default {
     }
   },
   methods: {
-    // main_login_function: function (key) {
-    //   this.u_data = key
-    //   this.w_state = 'logon'
-    // },
-    // main_logout_function: function (key) {
-    //   this.w_state = 'login'
-    //   this.u_data = []
-    // }
   },
   components: {
-    // Login,
-    // Wmenu
   }
 }
 </script>
