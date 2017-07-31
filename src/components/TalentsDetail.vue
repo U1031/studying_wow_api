@@ -14,13 +14,24 @@
                     <tr v-for='tier in received_data.talents'>
                         <td v-for='spells in tier'>
                             <div v-for='real in spells'>
-                                    <div v-if="real.spec != undefined">
-                                        <img v-if="real.spec.name === spec_name" :src='insert_img(real.spell.icon)'>
+                                <div v-if='real.spec != undefined'>
+                                    <div v-if="real.spec.name === spec_name">
+                                        {{img_spec_compute()}}
                                     </div>
-                                    <div v-else>
+                                </div>
+                            </div>
+
+                            <div v-for='real in spells'>
+                                <div v-if="real.spec != undefined">
+                                    <img v-if="real.spec.name === spec_name" :src='insert_img(real.spell.icon)'>
+                                </div>
+                                <div v-else>
+                                    <div v-if='spell_stack == "none"'>
                                         <img :src='insert_img(real.spell.icon)'>
                                     </div>
+                                </div>
                             </div>
+                            {{img_spec_stack_intialize()}}
                         </td>
                     </tr>
                 </table>
@@ -43,7 +54,7 @@ export default {
             received_data: [],
             spec_order: 2,
             spec_name: '잠행',
-            spell_stack: 0
+            spell_stack: 'none'
         }
     },
     created() {
@@ -63,7 +74,16 @@ export default {
     methods: {
         insert_img: function (img_src) {
             return 'https://render-kr.worldofwarcraft.com/icons/56/' + img_src + '.jpg'
+        },
+        img_spec_compute: function () {
+            this.spell_stack = 'ok'
+        },
+        img_spec_stack_intialize: function () {
+            this.spell_stack = 'none'
         }
+    },
+    computed: {
+        
     }
 }
 </script>
@@ -97,7 +117,7 @@ export default {
     position: absolute;
     border: 0.5px solid blue;
     margin: 0px auto;
-    bottom : 0px;
+    bottom: 0px;
     width: 100%;
     height: 77%;
 }
