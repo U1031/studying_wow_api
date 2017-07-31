@@ -11,19 +11,17 @@
             </div>
             <div class='talents_spell'>
                 <table border='1'>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
-                    </tr>
-                    <tr>
+                    <tr v-for='tier in received_data.talents'>
+                        <td v-for='spells in tier'>
+                            <div v-for='real in spells'>
+                                    <div v-if="real.spec != undefined">
+                                        <img v-if="real.spec.name === spec_name" :src='insert_img(real.spell.icon)'>
+                                    </div>
+                                    <div v-else>
+                                        <img :src='insert_img(real.spell.icon)'>
+                                    </div>
+                            </div>
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -42,15 +40,19 @@ export default {
             class_name: 'rogue',
             class_id: 4,
             talents_detail_page_state: '',
-            received_data: []
+            received_data: [],
+            spec_order: 2,
+            spec_name: '잠행',
+            spell_stack: 0
         }
     },
     created() {
         const baseURI = 'https://kr.api.battle.net/wow/data/talents?locale=ko_KR&apikey=r7gy86fvdpxcgux44nurnrx29rbcm4td';
         this.$http.get(`${baseURI}`)
             .then((result) => {
-                console.log(result)
                 this.received_data = result.data[this.class_id]
+                console.log(this.received_data)
+                console.log(this.received_data.talents[0][0])
                 this.talents_detail_page_state = 'ready'
             })
             .catch(function (error) {
