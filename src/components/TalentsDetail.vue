@@ -5,7 +5,7 @@
         </div>
         <div class='talents_detail_page_body'>
             <div class='talents_spec'>
-                <button v-for='spec in received_data.specs'>
+                <button v-for='spec in received_data.specs' v-on:click='change_spec(spec)'>
                     <img :src='insert_img(spec.icon)'>
                 </button>
             </div>
@@ -80,6 +80,11 @@ export default {
         },
         img_spec_stack_intialize: function () {
             this.spell_stack = 'none'
+        },
+        change_spec: function(key){
+            console.log(key)
+            this.spec_order = key.spec_order
+            this.spec_name = key.name
         }
     },
     computed: {
@@ -105,6 +110,10 @@ export default {
     top: 100px;
 }
 
+.talentsdetail .talents_detail_page_body img{
+
+}
+
 .talentsdetail .talents_detail_page_body .talents_spec {
     position: absolute;
     border-bottom: 0.5px solid red;
@@ -120,6 +129,16 @@ export default {
     bottom: 0px;
     width: 100%;
     height: 77%;
+}
+
+.talentsdetail .talents_detail_page_body .talents_spell table{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.talentsdetail .talents_detail_page_body .talents_spell table img{
+    width: 33%;
 }
 
 .talents_spec button {
