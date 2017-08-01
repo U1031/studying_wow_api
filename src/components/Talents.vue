@@ -35,8 +35,8 @@ export default {
             })
     },
     methods: {
-        talents_page_body_btn(selected_classes){
-            
+        talents_page_body_btn(selected_classes) {
+            this.$router.push({ name: 'TalentsDetail', params: { class_name: selected_classes.name, class_id: selected_classes.id } })
         }
     }
 }
